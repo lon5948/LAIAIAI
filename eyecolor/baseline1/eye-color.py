@@ -52,7 +52,7 @@ def eye_color(image):
     bounding_box = result[0]['box']
     left_eye = result[0]['keypoints']['left_eye']
     right_eye = result[0]['keypoints']['right_eye']
-
+    print(left_eye,right_eye)
     eye_distance = np.linalg.norm(np.array(left_eye)-np.array(right_eye))
     eye_radius = eye_distance/15 # approximate
    
