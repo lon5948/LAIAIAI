@@ -6,3 +6,11 @@ pip install scikit-image
 pip install argparse
 pip install opencv-python
 pip install opencv-contrib-python
+pip install dlib
+pip install pandas
+pip install face_recognition
+pip install pickle
+pip install sklearn
+pip install torch
+pip install torchvision
+pip install os
