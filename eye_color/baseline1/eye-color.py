@@ -8,8 +8,9 @@ import argparse
 import time
 from mtcnn.mtcnn import MTCNN
 import imutils
+import pandas as pd
 detector = MTCNN()
-
+from skimage import io
 
 # define HSV color ranges for eyes colors
 class_name = ("Blue", "Brown", "Black", "Green", "Other")
@@ -86,10 +87,27 @@ def eye_color(image):
     return class_name[main_color_index]
 
 if __name__ == '__main__':
-    imageInput = "test4.jpg"
-    image = cv2.imread(imageInput, cv2.IMREAD_COLOR)
-    image = imutils.resize(image, width=1000)
-    # detect color percentage
-    print(eye_color(image))
-    cv2.imwrite('result.jpg', image)    
-    cv2.waitKey(0)
+    locate = 'C:/Users/chuch/Desktop/LAIAIAI/eye_color'
+    df = pd.read_csv(locate+'/person.csv')
+    total = 230
+    img_paths = df['ID'][:total]
+    eyes = df['eyes'][:total]
+    correct=0
+    # Reading the image 
+    for img_path,eye in zip(img_paths,eyes):
+        try:
+            imageName = img_path+'.jpg'
+            image = io.imread(locate+'/dataset/'+imageName)
+            #image = cv2.imread(imageInput, cv2.IMREAD_COLOR)
+            image = imutils.resize(image, width=1000)
+            # detect color percentage
+            result = eye_color(image)
+            print(result)
+            #cv2.imwrite('result.jpg', image)    
+            #cv2.waitKey(0)
+            if result == eye:
+                correct+=1
+        except:
+            total-=1
+            continue
+    print('Accuracy = ',float(correct/total))
