@@ -122,7 +122,8 @@ def test():
           #print(resultR
 
 
-def eye(image):
+def eye(imageName):
+     image = Image.open(imageName)
      eyeWholeL, eyeCenterL,predIrisL = histMatchIris(image,eye_left_right=5)
 
      if eyeCenterL is None:
