@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 from my_face_recognition import f_face_recognition as rec_face
 from my_face_recognition import f_storage as st
-=======
-from race_analysis.race2.my_face_recognition import f_face_recognition as rec_face
-from race_analysis.race2.my_face_recognition import f_storage as st
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 import traceback
 import numpy as np
 import cv2

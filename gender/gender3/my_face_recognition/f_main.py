@@ -1,5 +1,5 @@
-from my_face_recognition import f_face_recognition as rec_face
-from my_face_recognition import f_storage as st
+from gender.gender3.my_face_recognition import f_face_recognition as rec_face
+from gender.gender3.my_face_recognition import f_storage as st
 import traceback
 import numpy as np
 import cv2

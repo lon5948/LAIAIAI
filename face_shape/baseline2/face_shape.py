@@ -2,16 +2,10 @@ import numpy as np # for mathematical calculations
 import cv2 # for face detection and other image operations
 import dlib # for detection of facial landmarks ex:nose,jawline,eyes
 from sklearn.cluster import KMeans # for clustering
-<<<<<<< HEAD
-
-#load the image
-imagepath = "./test1.jpg"
-=======
 import os
 
 #load the image
 imagepath = './test.jpg'
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 face_cascade_path = "C:/Users/user/LAIAIAI/face_shape/haarcascade_frontalface_default.xml"
 predictor_path = "C:/Users/user/LAIAIAI/face_shape/shape_predictor_68_face_landmarks.dat"
 
@@ -23,11 +17,7 @@ predictor = dlib.shape_predictor(predictor_path)
 image = cv2.imread(imagepath)
 
 #resizing the image to 000 cols nd 500 rows
-<<<<<<< HEAD
-#image = cv2.resize(image, (500, 500)) 
-=======
 image = cv2.resize(image, (500, 500)) 
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 #making another copy
 original = image.copy()
 #convert the image to grayscale
@@ -55,59 +45,11 @@ for (x,y,w,h) in faces:
     #converting to np matrix
     landmarks = np.matrix([[p.x,p.y] for p in detected_landmarks])
     #landmarks array contains indices of landmarks.
-<<<<<<< HEAD
-    
-=======
       
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 #making another copy  for showing final results
 results = original.copy()
 
 for (x,y,w,h) in faces:
-<<<<<<< HEAD
-    #making temporary copy
-    temp = original.copy()
-    #getting area of interest from image i.e., forehead (25% of face)
-    forehead = temp[y:y+int(0.25*h), x:x+w]
-    rows,cols, bands = forehead.shape
-    X = forehead.reshape(rows*cols,bands)
-    """
-    Applying kmeans clustering algorithm for forehead with 2 clusters 
-    this clustering differentiates between hair and skin (thats why 2 clusters)
-    """
-    #kmeans
-    kmeans = KMeans(n_clusters=2,init='k-means++',max_iter=300,n_init=10, random_state=0)
-    y_kmeans = kmeans.fit_predict(X)
-    for i in range(0,rows):
-        for j in range(0,cols):
-            if y_kmeans[i*cols+j]==True:
-                forehead[i][j]=[255,255,255]
-            if y_kmeans[i*cols+j]==False:
-                forehead[i][j]=[0,0,0]
-    #Steps to get the length of forehead
-    #1.get midpoint of the forehead
-    #2.travel left side and right side
-    #the idea here is to detect the corners of forehead which is the hair.
-    #3.Consider the point which has change in pixel value (which is hair)
-    forehead_mid = [int(cols/2), int(rows/2) ] #midpoint of forehead
-    lef=0 
-    #gets the value of forehead point
-    pixel_value = forehead[ forehead_mid[1],forehead_mid[0] ]
-    for i in range(0,cols):
-        #enters if when change in pixel color is detected
-        if forehead[forehead_mid[1],forehead_mid[0]-i].all()!=pixel_value.all():
-            lef=forehead_mid[0]-i
-            break
-    left = [lef,forehead_mid[1]]
-    rig=0
-    for i in range(0,cols):
-        #enters if when change in pixel color is detected
-        if forehead[forehead_mid[1],forehead_mid[0]+i].all()!=pixel_value.all():
-            rig = forehead_mid[0]+i
-            break
-    right = [rig,forehead_mid[1]]        
-
-=======
       #making temporary copy
       temp = original.copy()
       #getting area of interest from image i.e., forehead (25% of face)
@@ -150,7 +92,6 @@ for (x,y,w,h) in faces:
               break
       right = [rig,forehead_mid[1]]        
       
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 #drawing line 1 with circles
 linepointleft = (landmarks[1,0],landmarks[1,1])
 linepointright = (landmarks[15,0],landmarks[15,1])
@@ -196,25 +137,6 @@ angle = 180 - angle
 
 if similarity < 10:
   if angle < 160:
-<<<<<<< HEAD
-    print('square shape.')
-  else:
-    print('round shape.')
-elif line2 > line1:
-  if angle < 160:
-    print('triangle shape.Forehead is more wider') 
-  else:
-    print('heart shape')
-elif ovalsimilarity < 10:
-  print('diamond shape. line1 & line3 are similar and line1 is slightly larger')
-elif line3 > line1:
-  if angle < 160:
-    print('oval. face length is largest and jawline are angular ')
-  else:
-    print('long. face length is largest and jawlines are not angular')
-
-cv2.imwrite('output.jpg',results)
-=======
     face = 'square'
   else:
     face = 'round'
@@ -230,4 +152,3 @@ elif line3 > line1:
     face = 'oblong'
 #cv2.imwrite('output.jpg',results)
   
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed

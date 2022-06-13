@@ -1,16 +1,18 @@
-from face_shape.model.face_detector import shape
-#from gender_model import gender
-from race_analysis.race2.test_for_Face_info import color
+from face_shape.model.face_detector import shapemain
+from gender.gender3.model_main import gendermain
+from race_analysis.MLP_face_classification.pred import racemain
 #from face_shape.model.face_detector import eye
 
 #imagepath = input("Enter your image path")
 imagepath = './test2.jpeg'
-#gen = gender(imagepath)
-faceshape = shape(imagepath)
-skincolor = color(imagepath)
+gender = gendermain(imagepath)
+faceshape = shapemain(imagepath)
+race = racemain(imagepath)
 #eyecolor = eye(imagepath)
 
-#print('gender: ',gen)
-print('shape: ',faceshape)
-print('shape: ',skincolor)
+print('------------')
+print('gender: ',gender)
+print('shape:  ',faceshape)
+print('race:   ',race)
 #print('eyecolor',eyecolor)
+print('------------')

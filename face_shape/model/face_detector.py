@@ -3,11 +3,10 @@ import dlib
 import imutils    
 from imutils import face_utils
 import joblib
-import os
 
 face_detector = dlib.get_frontal_face_detector()
-landmark_detector = dlib.shape_predictor('C:/Users/user/LAIAIAI/face_shape/shape_predictor_68_face_landmarks.dat')
-clsfr=joblib.load('C:/Users/user/LAIAIAI/face_shape/model/KNN_Model.sav')
+landmark_detector = dlib.shape_predictor('face_shape/shape_predictor_68_face_landmarks.dat')
+clsfr=joblib.load('face_shape/model/KNN_Model.sav')
 
 def predict_face_type(points):
     label_dict={0:'diamond',1:'oblong',2:'oval',3:'round',4:'square',5:'triangle'}
@@ -29,7 +28,7 @@ def predict_face_type(points):
     label=result[0]
     return label_dict[label]
 
-def shape(imagepath):
+def shapemain(imagepath):
     img = cv2.imread(imagepath)
     #img is a single frame (RGB) captured by the camera
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -53,5 +52,5 @@ def shape(imagepath):
         return face
         #cv2.imwrite('output.jpg',img)
     except Exception as e:
-        print(e)
+        pass
 

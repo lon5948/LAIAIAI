@@ -1,25 +1,17 @@
 import cv2
 import numpy as np
 import face_recognition
-<<<<<<< HEAD
 from race_detection import f_my_race
 from my_face_recognition import f_main
-=======
-from race_analysis.race2.race_detection import f_my_race
-from race_analysis.race2.my_face_recognition import f_main
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 
 
 
 race_detector = f_my_race.Race_Model()
 rec_face = f_main.rec()
 #----------------------------------------------
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 def get_face_info(im):
     # face detection
     boxes_face = face_recognition.face_locations(im)
@@ -56,11 +48,7 @@ def bounding_box(out,img):
             continue
         else:
             try:
-<<<<<<< HEAD
                 print(data_face["race"])
-=======
-                return(data_face["race"])
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
             except:
                 pass
             

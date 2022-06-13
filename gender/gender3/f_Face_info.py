@@ -1,11 +1,7 @@
-import cv2
 import numpy as np
 import face_recognition
-from age_detection import f_my_age
-from gender_detection import f_my_gender
-from race_detection import f_my_race
-from emotion_detection import f_emotion_detection
-from my_face_recognition import f_main
+from gender.gender3.gender_detection import f_my_gender
+from gender.gender3.my_face_recognition import f_main
 
 
 
@@ -78,7 +74,7 @@ def bounding_box(out,img):
             continue
         else:
             try:
-                print(data_face["gender"])
+                return(data_face["gender"])
             except:
                 pass
 '''

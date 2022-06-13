@@ -17,7 +17,6 @@ import dlib
 
 
 def pixelReader(img,startHorizontal,startVertical,height):
-<<<<<<< HEAD
 	'''
 	Used to read specific pixel of given image.
 	img = image 
@@ -25,8 +24,6 @@ def pixelReader(img,startHorizontal,startVertical,height):
 	startVertical = vertical starting value
 	height = maximum limit for pixel reading
 	'''
-=======
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 	# list for satisfied pixels
 	blackColour = []
 
@@ -37,12 +34,8 @@ def pixelReader(img,startHorizontal,startVertical,height):
 			blackLowerRange = [80, 50, 50]
 			pixel = startHorizontal + j
 			colorCI = img[int(pixel), i]
-<<<<<<< HEAD
-			if ((colorCI[0] <= blackLowerRange[0] and colorCI[1] <= blackLowerRange[1] and colorCI[2] <= blackLowerRange[2])):
-=======
 			if ((colorCI[0] <= blackLowerRange[0] and colorCI[1] <= blackLowerRange[1] \
 				and colorCI[2] <= blackLowerRange[2])):
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 				blackColour.append([int(pixel), i])
 	return blackColour
 
@@ -180,33 +173,6 @@ def eye_color(image,left_eye,right_eye):
     return class_name[main_color_index]
 
 # Reading the image 
-<<<<<<< HEAD
-#for imageName in os.listdir(args["image"]):
-image = io.imread("test2.jpeg")
-image = imutils.resize(image, width=1000)
-# getting the faceattribute vector from dlib
-faceVector = getFaceAttributeVector(image)
-# getting the eye points
-leftEye, rightEye, eyeLeftBlackPixels, eyeRightBlackPixels = getEyeCoordinates(image, faceVector)
-# getting pupilpoint for left eye
-# leftEye is the cropped part of face image
-leftEyeCoord, eyeBrowCoord = faceVector[36], faceVector[19]
-leftPupilPoint = getPupilPoint(leftEye, eyeLeftBlackPixels, leftEyeCoord, eyeBrowCoord)
-# getting pupilpoint for right eye
-# rightEye is the cropped part of face image
-rightEyeCoord = faceVector[42]
-rightPupilPoint = getPupilPoint(rightEye, eyeRightBlackPixels, rightEyeCoord, eyeBrowCoord)
-
-
-# drawing pupil points on image
-cv2.circle(image, tuple(leftPupilPoint), 5, (255, 0, 0), -1)
-cv2.circle(image, tuple(rightPupilPoint), 5, (255, 0, 0), -1)
-finalImage = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-
-print(eye_color(finalImage,leftPupilPoint,rightPupilPoint))
-cv2.imwrite("result.jpg",finalImage)
-cv2.waitKey(0)
-=======
 for imageName in os.listdir("./images"):
 	image = io.imread("./images"+'/'+imageName)
 	image = imutils.resize(image, width=1000)
@@ -231,4 +197,3 @@ for imageName in os.listdir("./images"):
 
 	print(eye_color(finalImage,leftPupilPoint,rightPupilPoint))
 	cv2.imwrite(imageName,finalImage)
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed

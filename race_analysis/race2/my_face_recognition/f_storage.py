@@ -1,15 +1,9 @@
 '''
 cargo las imagenes que estan en el folder database_images
 '''
-<<<<<<< HEAD
 import config as cfg
 import os
 from my_face_recognition import f_main
-=======
-import race_analysis.race2.config as cfg
-import os
-from race_analysis.race2.my_face_recognition import f_main
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 import cv2
 import numpy as np
 import traceback

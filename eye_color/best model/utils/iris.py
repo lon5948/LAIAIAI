@@ -141,30 +141,6 @@ def makeIris(colour,predIris , iris_brown , iris_blue, iris_green , iris_black):
   hsv_blck = [0.0,
   14.28,
   2.74]
-<<<<<<< HEAD
-
-  distances = [hsvDist(colour,hsv_br) , hsvDist(colour ,hsv_bl), hsvDist(colour ,hsv_g ) , hsvDist(colour ,hsv_blck )]
-  majorColorIndex = np.argmin(distances)
-
-  if majorColorIndex == 0:
-    #print("brown")
-    iris = cv2.addWeighted(iris_brown, 0.65, predIris, 0.35, 0)
-  
-  elif majorColorIndex == 1:
-        #print("blue")
-        iris = cv2.addWeighted(iris_blue, 0.2, predIris, 0.8, 0)
-
-  elif majorColorIndex == 2:
-        #print("green")
-        iris = cv2.addWeighted(iris_green, 0.2, predIris, 0.8, 0)
-
-  elif majorColorIndex == 3:
-        #print("black")
-        iris = cv2.addWeighted(iris_black, 0.65, predIris, 0.35, 0)
-
-
-  return iris
-=======
   print(colour)
   distances = [hsvDist(colour,hsv_br) , hsvDist(colour ,hsv_bl), hsvDist(colour ,hsv_g ) , hsvDist(colour ,hsv_blck )]
   majorColorIndex = np.argmin(distances)
@@ -191,7 +167,6 @@ def makeIris(colour,predIris , iris_brown , iris_blue, iris_green , iris_black):
 
 
   return iris,result
->>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 
 
 def combineIris(irisL,irisR):
