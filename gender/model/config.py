@@ -8,5 +8,5 @@ labels = ['angry','disgust','fear','happy','neutral','sad','surprise']
 
 # -------------------------------------- face_recognition ---------------------------------------
 # path imagenes folder
-path_images = "images_db"
+path_images = "gender/model/images_db"
 

@@ -1,18 +1,19 @@
-from my_face_recognition import f_face_recognition as rec_face
-from my_face_recognition import f_storage as st
+from gender.model.my_face_recognition import f_face_recognition as rec_face
+#from gender.model.my_face_recognition import f_storage as st
 import traceback
 import numpy as np
 import cv2
 
 #------------------------ Inicia el flujo principal ----------------------------
 class rec():
+    """
     def __init__(self):
         '''
         -db_names: [name1,name2,...,namen] lista de strings
         -db_features: array(array,array,...,array) cada array representa las caracteriticas de un usuario
         '''
         self.db_names, self.db_features = st.load_images_to_database()
-
+"""
     def recognize_face(self,im):
         '''
         Input:

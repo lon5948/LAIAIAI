@@ -47,7 +47,7 @@ def shapemain(imagepath):
             cv2.putText(img,str(count),cen,cv2.FONT_HERSHEY_SIMPLEX,0.3,(0,255,255),1)
             count = count+1
             face = predict_face_type(points)
-        cv2.imwrite('output.jpg',img)
+        #cv2.imwrite('output.jpg',img)
         return face
         
     except Exception as e:

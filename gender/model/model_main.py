@@ -4,7 +4,7 @@ Created on Mon Jun 13 00:24:52 2022
 
 @author: Homeuser
 """
-import f_Face_info
+import gender.model.f_Face_info as f_Face_info
 import cv2
 import os
 import pandas as pd
