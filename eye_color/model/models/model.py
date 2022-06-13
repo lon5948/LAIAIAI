@@ -10,8 +10,12 @@ import torchvision
 from .resnet import Resnet18
 # from modules.bn import InPlaceABNSync as BatchNorm2d
 
-
+'''
+torch.cuda.memory_summary(device=None, abbreviated=False)
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+'''
+DEVICE = torch.device('cpu')
 
 
 

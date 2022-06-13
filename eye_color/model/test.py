@@ -58,7 +58,7 @@ def test():
      
      iris_green,iris_brown,iris_blue,iris_black,iris_mask = util.returnIrisTemplate()
      #images = os.listdir(args.test_dir)
-     locate = 'C:/Users/chuch/Desktop/LAIAIAI/eye_color'
+     locate = 'eye_color'
      df = pd.read_csv(locate+'/person.csv')
      total = 230
      img_paths = df['ID'][:total]
@@ -125,7 +125,7 @@ def test():
 def eye(imageName):
      image = Image.open(imageName)
      eyeWholeL, eyeCenterL,predIrisL = histMatchIris(image,eye_left_right=5)
-
+     iris_green,iris_brown,iris_blue,iris_black,iris_mask = util.returnIrisTemplate()
      if eyeCenterL is None:
           irisL = None
           resultL='None'
@@ -150,7 +150,7 @@ def eye(imageName):
           result = resultL
      else:
           result = resultR
-     print(result)
+     return result
 
 
 

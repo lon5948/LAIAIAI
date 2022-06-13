@@ -10,10 +10,13 @@ from PIL import Image
 import colorsys
 from sklearn.cluster import KMeans
 from eye_color.model.models.model import BiSeNet
-
+import os
+'''
+torch.cuda.memory_summary(device=None, abbreviated=False)
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
+'''
+DEVICE = torch.device('cpu')
 
 def segment_image(image,modelpath = './pretrained_models/79999_iter.pth', size = 256):
     n_classes = 19

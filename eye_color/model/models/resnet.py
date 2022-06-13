@@ -5,13 +5,17 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.model_zoo as modelzoo
+import os
 
 # from modules.bn import InPlaceABNSync as BatchNorm2d
 
 resnet18_url = 'https://download.pytorch.org/models/resnet18-5c106cde.pth'
+'''
+torch.cuda.empty_cache()
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-
+'''
+DEVICE = torch.device('cpu')
 
 def conv3x3(in_planes, out_planes, stride=1):
     """3x3 convolution with padding"""
