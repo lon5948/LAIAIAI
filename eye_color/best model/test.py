@@ -42,6 +42,7 @@ def parse_args():
 
 
 def main():
+<<<<<<< HEAD
     args = parse_args()
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu_id
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -56,6 +57,23 @@ def main():
     images = os.listdir(args.test_dir)
 
     for b , img in enumerate(images):
+=======
+     args = parse_args()
+     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu_id
+     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+
+
+     output_dir = args.output_dir
+     if not os.path.exists(output_dir):
+          os.makedirs(output_dir)
+     
+     iris_green,iris_brown,iris_blue,iris_black,iris_mask = util.returnIrisTemplate()
+     images = os.listdir(args.test_dir)
+     resultL = []
+     resultR = []
+     for b , img in enumerate(images):
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 
 
           #print(img)
@@ -66,6 +84,7 @@ def main():
 
           if eyeCenterL is None:
                irisL = None
+<<<<<<< HEAD
           else:
                coloursL = util.majorColors(eyeCenterL)
                print(coloursL)
@@ -73,10 +92,21 @@ def main():
               #  print(predIrisL.shape)
                irisL = makeIris(coloursL[1],predIrisL, iris_brown , iris_blue, iris_green,iris_black)
                
+=======
+               resultL.append('None')
+          else:
+               coloursL = util.majorColors(eyeCenterL)
+               #print(coloursL)
+              #  print(coloursL[1].shape)
+              #  print(predIrisL.shape)
+               irisL,result = makeIris(coloursL[1],predIrisL, iris_brown , iris_blue, iris_green,iris_black)
+               resultL.append(result)
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
           eyeWholeR, eyeCenterR,predIrisR = histMatchIris(image,eye_left_right=4)
 
           if eyeCenterR is None:
                irisR = None
+<<<<<<< HEAD
           else:
                coloursR = util.majorColors(eyeCenterR)
                print(coloursR)
@@ -85,14 +115,33 @@ def main():
           #print(irisL,irisR)
 
           iris = combineIris(irisL,irisR)
+=======
+               resultR.append('None')
+          else:
+               coloursR = util.majorColors(eyeCenterR)
+               #print(coloursR)
+               irisR,result = makeIris(coloursR[1],predIrisR, iris_brown , iris_blue, iris_green,iris_black)
+               resultR.append(result)
+          #print(irisL,irisR)
+
+          '''iris = combineIris(irisL,irisR)
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
           if iris is None:
                print("No iris found in image.")
           else:
                #print(iris.shape)
+<<<<<<< HEAD
                plt.imsave(os.path.join('results',img),iris)
           
 
     print(f"Completed generating iris of {len(images)} images")
+=======
+               plt.imsave(os.path.join('results',img),iris)'''
+          
+     print(resultL)
+     print(resultR)
+     print(f"Completed generating iris of {len(images)} images")
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 
 
 

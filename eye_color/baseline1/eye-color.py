@@ -7,11 +7,16 @@ import cv2
 import argparse
 import time
 from mtcnn.mtcnn import MTCNN
+<<<<<<< HEAD
 
+=======
+import imutils
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 detector = MTCNN()
 
 
 # define HSV color ranges for eyes colors
+<<<<<<< HEAD
 class_name = ("Blue", "Blue Gray", "Brown", "Brown Gray", "Brown Black", "Green", "Green Gray", "Other")
 EyeColor = {
     class_name[0] : ((166, 21, 50), (240, 100, 85)),
@@ -21,6 +26,14 @@ EyeColor = {
     class_name[4] : ((0, 10, 5), (40, 40, 25)),
     class_name[5] : ((60, 21, 50), (165, 100, 85)),
     class_name[6] : ((60, 2, 25), (165, 20, 65))
+=======
+class_name = ("Blue", "Brown", "Black", "Green", "Other")
+EyeColor = {
+    class_name[0] : ((166, 21, 50), (240, 100, 85)),
+    class_name[1] : ((2, 20, 20), (40, 100, 60)),
+    class_name[2] : ((0, 10, 5), (40, 40, 25)),
+    class_name[3] : ((60, 21, 50), (165, 100, 85))
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
 }
 
 def check_color(hsv, color):
@@ -32,7 +45,11 @@ def check_color(hsv, color):
 
 # define eye color category rules in HSV space
 def find_class(hsv):
+<<<<<<< HEAD
     color_id = 7
+=======
+    color_id = 4
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
     for i in range(len(class_name)-1):
         if check_color(hsv, EyeColor[class_name[i]]) == True:
             color_id = i
@@ -89,8 +106,14 @@ def eye_color(image):
     return class_name[main_color_index]
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     imageInput = "test2.jpeg"
     image = cv2.imread(imageInput, cv2.IMREAD_COLOR)
+=======
+    imageInput = "test4.jpg"
+    image = cv2.imread(imageInput, cv2.IMREAD_COLOR)
+    image = imutils.resize(image, width=1000)
+>>>>>>> 8a8112f87734651ff1b98b4acf9eaa0eb66724ed
     # detect color percentage
     print(eye_color(image))
     cv2.imwrite('result.jpg', image)    

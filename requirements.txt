@@ -1,0 +1,17 @@
+pip install tensorflow>=1.12.1
+pip install mtcnn
+pip install numpy
+pip install imutils
+pip install scikit-image
+pip install argparse
+pip install opencv-python
+pip install opencv-contrib-python
+pip install dlib
+pip install pandas
+pip install face_recognition
+pip install pickle
+pip install sklearn
+pip install torch
+pip install torchvision
+pip install os
+pip install deepface
