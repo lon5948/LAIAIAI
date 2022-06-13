@@ -10,7 +10,7 @@
 #### Face Shape
 | test image  | baseline 1 | baseline 2 | KNN model |
 | ------------- | ------------- | ------------- | ------------- |
-| <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/test1.jpg" width="300" height="350">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/output.jpg" width="300" height="350">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline2/output.jpg" width="300" height="350"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/model/output.jpg" width="300" height="350">
+| <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/test1.jpg" width="250" height="300">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/output.jpg" width="250" height="300">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline2/output.jpg" width="250" height="300"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/model/output.jpg" width="250" height="300">
  
 
 #### Eye Color
