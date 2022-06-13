@@ -4,8 +4,8 @@ from imutils import face_utils
 import joblib
 
 face_detector = dlib.get_frontal_face_detector()
-landmark_detector = dlib.shape_predictor('C:/Users/user/LAIAIAI/face_shape/shape_predictor_68_face_landmarks.dat')
-clsfr=joblib.load('C:/Users/user/LAIAIAI/face_shape/model/KNN_Model.sav')
+landmark_detector = dlib.shape_predictor('face_shape/shape_predictor_68_face_landmarks.dat')
+clsfr=joblib.load('face_shape/model/KNN_model.sav')
 
 def predict_face_type(points):
     label_dict={0:'diamond',1:'oblong',2:'oval',3:'round',4:'square',5:'triangle'}
