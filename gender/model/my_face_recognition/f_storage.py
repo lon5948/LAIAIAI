@@ -1,9 +1,9 @@
 '''
 cargo las imagenes que estan en el folder database_images
 '''
-import gender.gender3.config as cfg
+import config as cfg
 import os
-from gender.gender3.my_face_recognition import f_main
+from my_face_recognition import f_main
 import cv2
 import numpy as np
 import traceback

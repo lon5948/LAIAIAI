@@ -1,7 +1,11 @@
+import cv2
 import numpy as np
 import face_recognition
-from gender.gender3.gender_detection import f_my_gender
-from gender.gender3.my_face_recognition import f_main
+#from age_detection import f_my_age
+from gender_detection import f_my_gender
+#from race_detection import f_my_race
+#from emotion_detection import f_emotion_detection
+from my_face_recognition import f_main
 
 
 
@@ -74,10 +78,10 @@ def bounding_box(out,img):
             continue
         else:
             try:
-                return(data_face["gender"])
+                print(data_face["gender"])
             except:
                 pass
-'''
+"""
 def bounding_box(out,img):
     for data_face in out:
         box = data_face["bbx_frontal_face"]
@@ -98,7 +102,7 @@ def bounding_box(out,img):
             except:
                 pass
             try:
-                cv2.putText(img, "gender: " +data_face["gender"], (x0, y0-step-10*1), cv2.FONT_HERSHEY_SIMPLEX, fontSize, (0,255,0), thickness)
+                cv2.putText(img, data_face["gender"], (x0, y0-step-10*1), cv2.FONT_HERSHEY_SIMPLEX, fontSize, (0,255,0), thickness)
             except:
                 pass
             try:
@@ -115,4 +119,4 @@ def bounding_box(out,img):
                 pass
     return img
 
-'''
+"""
