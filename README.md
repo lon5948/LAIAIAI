@@ -19,10 +19,10 @@ Download the pretrained models from [here](https://drive.google.com/file/d/1aJYp
 
 ## Run
 
-   $  cd LAIAIAI
+  $  cd LAIAIAI
    
-   $  python main.py
+  $  python main.py
    
-   $  enter your image path
+  $  enter your image path
 
 ## Reference
