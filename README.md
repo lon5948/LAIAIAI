@@ -18,9 +18,10 @@ Download the pretrained models from [here](https://drive.google.com/file/d/1aJYp
 ## Installation
 
 ## Run
-'''
+```
   $  cd LAIAIAI
   $  python main.py
   $  enter your image path
-'''
+```
+
 ## Reference
