@@ -30,7 +30,7 @@ def predict_face_type(points):
 def shapemain(imagepath):
     img = cv2.imread(imagepath)
     #img is a single frame (RGB) captured by the camera
-    gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     #img will be converted into a gray image
     rect=face_detector(gray)
     (height,width)=img.shape[0:2]
@@ -53,5 +53,5 @@ def shapemain(imagepath):
     except Exception as e:
         pass
 
-shapemain('./test1.jpg')
+#shapemain('./test1.jpg')
 

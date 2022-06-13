@@ -13,7 +13,7 @@ from skimage import io
 import imutils
 import argparse
 import dlib
-
+import pandas as pd
 
 
 def pixelReader(img,startHorizontal,startVertical,height):
@@ -52,6 +52,8 @@ def getFaceAttributeVector(image):
 
 	# if dlib is able to detect the faces 
 	image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+	if(len(dets)==0):
+		return None
 	for k, d in enumerate(dets):
 		shape = predictor(image, d)
 
@@ -93,7 +95,7 @@ def getPupilPoint(img, blackCoordinates, eyeTopPointX, eyeBottomPointY):
 	gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT, dp = 1,minDist = 5,
 		param1=250,param2=10,minRadius=1,maxRadius=-1)
-	
+	pupilPoint = [0,0]
 	# check if houghcircles has detect any circle or not
 	if circles is not None:
 		circles = np.uint16(np.around(circles))
@@ -109,17 +111,13 @@ def getPupilPoint(img, blackCoordinates, eyeTopPointX, eyeBottomPointY):
 	return pupilPoint
 
 # define HSV color ranges for eyes colors
-class_name = ("Blue", "Blue Gray", "Brown", "Brown Gray", "Brown Black", "Green", "Green Gray", "Other")
+class_name = ("Blue", "Brown", "Black", "Green", "Other")
 EyeColor = {
     class_name[0] : ((166, 21, 50), (240, 100, 85)),
-    class_name[1] : ((166, 2, 25), (300, 20, 75)),
-    class_name[2] : ((2, 20, 20), (40, 100, 60)),
-    class_name[3] : ((20, 3, 30), (65, 60, 60)),
-    class_name[4] : ((0, 10, 5), (40, 40, 25)),
-    class_name[5] : ((60, 21, 50), (165, 100, 85)),
-    class_name[6] : ((60, 2, 25), (165, 20, 65))
+    class_name[1] : ((2, 20, 20), (40, 100, 60)),
+    class_name[2] : ((0, 10, 5), (40, 40, 25)),
+    class_name[3] : ((60, 21, 50), (165, 100, 85))
 }
-
 def check_color(hsv, color):
     if (hsv[0] >= color[0][0]) and (hsv[0] <= color[1][0]) and (hsv[1] >= color[0][1]) and \
     hsv[1] <= color[1][1] and (hsv[2] >= color[0][2]) and (hsv[2] <= color[1][2]):
@@ -129,7 +127,7 @@ def check_color(hsv, color):
 
 # define eye color category rules in HSV space
 def find_class(hsv):
-    color_id = 7
+    color_id = 4
     for i in range(len(class_name)-1):
         if check_color(hsv, EyeColor[class_name[i]]) == True:
             color_id = i
@@ -168,32 +166,48 @@ def eye_color(image,left_eye,right_eye):
         print(class_name[i], ": ", round(eye_class[i]/total_vote*100, 2), "%")'''
     
     label = 'Dominant Eye Color: %s' % class_name[main_color_index]  
-    cv2.putText(image, label, (left_eye[0]-10, left_eye[1]-40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (155,255,0))
-    cv2.imshow('EYE-COLOR-DETECTION', image)
+    #cv2.putText(image, label, (left_eye[0]-10, left_eye[1]-40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (155,255,0))
+    #cv2.imshow('EYE-COLOR-DETECTION', image)
     return class_name[main_color_index]
-
+	
+locate = 'C:/Users/chuch/Desktop/LAIAIAI/eye_color'
+df = pd.read_csv(locate+'/person.csv')
+total = 230
+img_paths = df['ID'][:total]
+eyes = df['eyes'][:total]
+correct=0
 # Reading the image 
-for imageName in os.listdir("./images"):
-	image = io.imread("./images"+'/'+imageName)
-	image = imutils.resize(image, width=1000)
-	# getting the faceattribute vector from dlib
-	faceVector = getFaceAttributeVector(image)
-	# getting the eye points
-	leftEye, rightEye, eyeLeftBlackPixels, eyeRightBlackPixels = getEyeCoordinates(image, faceVector)
-	# getting pupilpoint for left eye
-	# leftEye is the cropped part of face image
-	leftEyeCoord, eyeBrowCoord = faceVector[36], faceVector[19]
-	leftPupilPoint = getPupilPoint(leftEye, eyeLeftBlackPixels, leftEyeCoord, eyeBrowCoord)
-	# getting pupilpoint for right eye
-	# rightEye is the cropped part of face image
-	rightEyeCoord = faceVector[42]
-	rightPupilPoint = getPupilPoint(rightEye, eyeRightBlackPixels, rightEyeCoord, eyeBrowCoord)
+for img_path,eye in zip(img_paths,eyes):
+	try:
+		imageName = img_path+'.jpg'
+		image = io.imread(locate+'/dataset/'+imageName)
+		image = imutils.resize(image, width=1000)
+		# getting the faceattribute vector from dlib
+		faceVector = getFaceAttributeVector(image)
+		if(faceVector is None):
+			continue
+		# getting the eye points
+		leftEye, rightEye, eyeLeftBlackPixels, eyeRightBlackPixels = getEyeCoordinates(image, faceVector)
+		# getting pupilpoint for left eye
+		# leftEye is the cropped part of face image
+		leftEyeCoord, eyeBrowCoord = faceVector[36], faceVector[19]
+		leftPupilPoint = getPupilPoint(leftEye, eyeLeftBlackPixels, leftEyeCoord, eyeBrowCoord)
+		# getting pupilpoint for right eye
+		# rightEye is the cropped part of face image
+		rightEyeCoord = faceVector[42]
+		rightPupilPoint = getPupilPoint(rightEye, eyeRightBlackPixels, rightEyeCoord, eyeBrowCoord)
 
 
-	# drawing pupil points on image
-	cv2.circle(image, tuple(leftPupilPoint), 5, (255, 0, 0), -1)
-	cv2.circle(image, tuple(rightPupilPoint), 5, (255, 0, 0), -1)
-	finalImage = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-
-	print(eye_color(finalImage,leftPupilPoint,rightPupilPoint))
-	cv2.imwrite(imageName,finalImage)
+		# drawing pupil points on image
+		cv2.circle(image, tuple(leftPupilPoint), 5, (255, 0, 0), -1)
+		cv2.circle(image, tuple(rightPupilPoint), 5, (255, 0, 0), -1)
+		finalImage = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+		result = eye_color(finalImage,leftPupilPoint,rightPupilPoint)
+		print(result)
+		#cv2.imwrite(imageName,finalImage)
+		if result == eye:
+			correct+=1
+	except:
+		total-=1
+		continue
+print('Accuracy = ',float(correct/total))

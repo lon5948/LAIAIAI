@@ -15,3 +15,5 @@ pip install torch
 pip install torchvision
 pip install os
 pip install deepface
+pip install natsort
+pip install face_alignment
