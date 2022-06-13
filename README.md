@@ -18,6 +18,9 @@
  
 
 #### Eye Color
+| test image  | baseline 1 | baseline 2 | Iris extraction |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/baseline1/test2.jpeg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/baseline1/result.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/bs2/result.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/model/results/test2.jpg" width="250" height="280">
 
 #### Race Analysis
 > FairFace：      
