@@ -1,12 +1,11 @@
 import cv2  
-import dlib
-import imutils    
+import dlib  
 from imutils import face_utils
 import joblib
 
 face_detector = dlib.get_frontal_face_detector()
-landmark_detector = dlib.shape_predictor('face_shape/shape_predictor_68_face_landmarks.dat')
-clsfr=joblib.load('face_shape/model/KNN_Model.sav')
+landmark_detector = dlib.shape_predictor('C:/Users/user/LAIAIAI/face_shape/shape_predictor_68_face_landmarks.dat')
+clsfr=joblib.load('C:/Users/user/LAIAIAI/face_shape/model/KNN_Model.sav')
 
 def predict_face_type(points):
     label_dict={0:'diamond',1:'oblong',2:'oval',3:'round',4:'square',5:'triangle'}
@@ -35,8 +34,7 @@ def shapemain(imagepath):
     #img will be converted into a gray image
     rect=face_detector(gray)
     (height,width)=img.shape[0:2]
-    img[0:50,0:width]=[0,255,0]
-        
+
     try:
         points=landmark_detector(gray,rect[0])
         #getting the 68 points of the face
@@ -49,8 +47,11 @@ def shapemain(imagepath):
             cv2.putText(img,str(count),cen,cv2.FONT_HERSHEY_SIMPLEX,0.3,(0,255,255),1)
             count = count+1
             face = predict_face_type(points)
+        cv2.imwrite('output.jpg',img)
         return face
-        #cv2.imwrite('output.jpg',img)
+        
     except Exception as e:
         pass
+
+shapemain('./test1.jpg')
 
