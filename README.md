@@ -25,7 +25,7 @@ Download the pretrained models from [here](https://drive.google.com/file/d/1aJYp
   $  python main.py
 ```
 ```
-  $  enter your image path
+  $  [enter your image path]
 ```
 
 ## Reference
