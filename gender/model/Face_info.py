@@ -1,4 +1,4 @@
-import f_Face_info
+import gender.model.f_Face_info as f_Face_info
 import cv2
 import time
 import imutils

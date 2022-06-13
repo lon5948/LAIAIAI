@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 import face_recognition
 #from age_detection import f_my_age
-from gender_detection import f_my_gender
+from gender.model.gender_detection import f_my_gender as f_my_gender
 #from race_detection import f_my_race
 #from emotion_detection import f_emotion_detection
-from my_face_recognition import f_main
+#from gender.model.my_face_recognition import f_main as f_main
 
 
 
@@ -14,7 +14,7 @@ from my_face_recognition import f_main
 gender_detector =  f_my_gender.Gender_Model()
 #race_detector = f_my_race.Race_Model()
 #emotion_detector = f_emotion_detection.predict_emotions()
-rec_face = f_main.rec()
+#rec_face = f_main.rec()
 #----------------------------------------------
 
 
@@ -79,6 +79,7 @@ def bounding_box(out,img):
         else:
             try:
                 print(data_face["gender"])
+                return(data_face["gender"])
             except:
                 pass
 """
