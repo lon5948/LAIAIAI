@@ -3,6 +3,8 @@
 ## Features
 
 #### Gender
+gender3:
+Download the pretrained models from [here](https://drive.google.com/uc?id=1wUXRVlbsni2FN9-jkS_f4UTUrm1bRLyk) and save it in the same folder as where f_my_gender.py is located.
 
 #### Face Shape
 
