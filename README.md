@@ -4,7 +4,7 @@
 
 #### Gender
 > bs1： 
-> When you run the script for the first time, it will download the pre-trained model from this [link]  (https://github.com/arunponnusamy/cvlib/releases/download/v0.2.0/gender_detection.model) and place it under pre-trained
+> When you run the script for the first time, it will download the pre-trained model from this [link](https://github.com/arunponnusamy/cvlib/releases/download/v0.2.0/gender_detection.model) and place it under pre-trained
 > directory in the current path.
 
 > gender3：   
