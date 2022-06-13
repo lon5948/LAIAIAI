@@ -13,6 +13,10 @@ import utils.segment
 from utils.logger import setup_logger
 from utils import util
 from utils.iris import histMatchIris,makeIris,combineIris
+import imutils
+import pandas as pd
+from skimage import io
+
 
 
 def parse_args():
@@ -53,51 +57,69 @@ def main():
           os.makedirs(output_dir)
      
      iris_green,iris_brown,iris_blue,iris_black,iris_mask = util.returnIrisTemplate()
-     images = os.listdir(args.test_dir)
-     resultL = []
-     resultR = []
-     for b , img in enumerate(images):
+     #images = os.listdir(args.test_dir)
+     locate = 'C:/Users/chuch/Desktop/LAIAIAI/eye_color'
+     df = pd.read_csv(locate+'/person.csv')
+     total = 230
+     img_paths = df['ID'][:total]
+     eyes = df['eyes'][:total]
+     correct=0
+     # Reading the image 
+     for img_path,eye in zip(img_paths,eyes):
+          try:
+               imageName = img_path+'.jpg'
+               #image = io.imread(locate+'/dataset/'+imageName)
 
+               image = Image.open(os.path.join(locate+'/dataset',imageName))
+               eyeWholeL, eyeCenterL,predIrisL = histMatchIris(image,eye_left_right=5)
 
-          #print(img)
-          image = Image.open(os.path.join(args.test_dir,img))
+               if eyeCenterL is None:
+                    irisL = None
+                    resultL='None'
+               else:
+                    coloursL = util.majorColors(eyeCenterL)
+                    #print(coloursL)
+               #  print(coloursL[1].shape)
+               #  print(predIrisL.shape)
+                    irisL,result = makeIris(coloursL[1],predIrisL, iris_brown , iris_blue, iris_green,iris_black)
+                    resultL=result
+               eyeWholeR, eyeCenterR,predIrisR = histMatchIris(image,eye_left_right=4)
 
+               if eyeCenterR is None:
+                    irisR = None
+                    resultR='None'
+               else:
+                    coloursR = util.majorColors(eyeCenterR)
+                    #print(coloursR)
+                    irisR,result = makeIris(coloursR[1],predIrisR, iris_brown , iris_blue, iris_green,iris_black)
+                    resultR=result
+               
+               if(resultL=='None' and resultR=='None'):
+                    total-=1
+                    continue
+               elif resultL!='None':
+                    result = resultL
+               else:
+                    result = resultR
+               print(result)
+               if result == eye:
+                    correct+=1
+               '''iris = combineIris(irisL,irisR)
+               if iris is None:
+                    print("No iris found in image.")
+               else:
+                    #print(iris.shape)
+                    plt.imsave(os.path.join('results',img),iris)'''
+          except:
+               total-=1
+               continue
+     print('Accuracy = ',float(correct/total))
+               #print(irisL,irisR)
 
-          eyeWholeL, eyeCenterL,predIrisL = histMatchIris(image,eye_left_right=5)
-
-          if eyeCenterL is None:
-               irisL = None
-               resultL.append('None')
-          else:
-               coloursL = util.majorColors(eyeCenterL)
-               #print(coloursL)
-              #  print(coloursL[1].shape)
-              #  print(predIrisL.shape)
-               irisL,result = makeIris(coloursL[1],predIrisL, iris_brown , iris_blue, iris_green,iris_black)
-               resultL.append(result)
-          eyeWholeR, eyeCenterR,predIrisR = histMatchIris(image,eye_left_right=4)
-
-          if eyeCenterR is None:
-               irisR = None
-               resultR.append('None')
-          else:
-               coloursR = util.majorColors(eyeCenterR)
-               #print(coloursR)
-               irisR,result = makeIris(coloursR[1],predIrisR, iris_brown , iris_blue, iris_green,iris_black)
-               resultR.append(result)
-          #print(irisL,irisR)
-
-          '''iris = combineIris(irisL,irisR)
-          if iris is None:
-               print("No iris found in image.")
-          else:
-               #print(iris.shape)
-               plt.imsave(os.path.join('results',img),iris)'''
-          
-     print(resultL)
-     print(resultR)
-     print(f"Completed generating iris of {len(images)} images")
-
+               
+               
+          #print(resultL)
+          #print(resultR
 
 
 

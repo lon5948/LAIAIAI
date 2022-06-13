@@ -146,23 +146,19 @@ def makeIris(colour,predIris , iris_brown , iris_blue, iris_green , iris_black):
   majorColorIndex = np.argmin(distances)
   
   if majorColorIndex == 0:
-    result ="brown"
-    print("brown")
+    result ="Brown"
     iris = cv2.addWeighted(iris_brown, 0.65, predIris, 0.35, 0)
   
   elif majorColorIndex == 1:
-      result = "blue"
-      print("blue")
+      result = "Blue"
       iris = cv2.addWeighted(iris_blue, 0.2, predIris, 0.8, 0)
 
   elif majorColorIndex == 2:
-    result = "green"
-    print("green")
+    result = "Green"
     iris = cv2.addWeighted(iris_green, 0.2, predIris, 0.8, 0)
 
   elif majorColorIndex == 3:
-    result = "black"
-    print("black")
+    result = "Black"
     iris = cv2.addWeighted(iris_black, 0.65, predIris, 0.35, 0)
 
 
