@@ -43,7 +43,7 @@
 
 
 ## Datasets
-Datasets：[download](https://drive.google.com/file/d/1NcbXiu5LVI8T_QC9_SduTqQVMMae1oZ0/view)      
+Datasets for testing：[download](https://drive.google.com/file/d/1NcbXiu5LVI8T_QC9_SduTqQVMMae1oZ0/view)      
 Dataset of Face Shape：[download](https://drive.google.com/file/d/1K5MkBs9EVuNA8isQR_3fJr_84TIFJOT7/view)
 
 ## Reference
