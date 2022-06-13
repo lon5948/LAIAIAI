@@ -169,6 +169,7 @@ def eye_color(image,left_eye,right_eye):
     #cv2.putText(image, label, (left_eye[0]-10, left_eye[1]-40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (155,255,0))
     #cv2.imshow('EYE-COLOR-DETECTION', image)
     return class_name[main_color_index]
+	
 locate = 'C:/Users/chuch/Desktop/LAIAIAI/eye_color'
 df = pd.read_csv(locate+'/person.csv')
 total = 230

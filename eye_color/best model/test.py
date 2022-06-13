@@ -45,7 +45,7 @@ def parse_args():
 
 
 
-def main():
+def test():
      args = parse_args()
      os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu_id
      device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -122,11 +122,34 @@ def main():
           #print(resultR
 
 
+def eye(image):
+     eyeWholeL, eyeCenterL,predIrisL = histMatchIris(image,eye_left_right=5)
 
-               
-     
-if __name__ == '__main__':
-  main()
+     if eyeCenterL is None:
+          irisL = None
+          resultL='None'
+     else:
+          coloursL = util.majorColors(eyeCenterL)
+          irisL,result = makeIris(coloursL[1],predIrisL, iris_brown , iris_blue, iris_green,iris_black)
+          resultL=result
+     eyeWholeR, eyeCenterR,predIrisR = histMatchIris(image,eye_left_right=4)
+
+     if eyeCenterR is None:
+               irisR = None
+               resultR='None'
+     else:
+          coloursR = util.majorColors(eyeCenterR)
+          #print(coloursR)
+          irisR,result = makeIris(coloursR[1],predIrisR, iris_brown , iris_blue, iris_green,iris_black)
+          resultR=result
+     if(resultL=='None' and resultR=='None'):
+          total-=1
+          print('Not fouond')
+     elif resultL!='None':
+          result = resultL
+     else:
+          result = resultR
+     print(result)
 
 
 
