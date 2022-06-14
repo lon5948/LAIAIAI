@@ -29,7 +29,10 @@ In this project, we will implement four classifiers on human faces, gender, face
 | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs1/3.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs1/gender_detection.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs2/3_output.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/model/3_output.jpg" width="250" height="280">
 
 #### Face Shape
-
+> baseline 1: face_ecognition    
+> baseline 2: K Means Clustering     
+> model: K Nearest Neighbor(KNN)     
+> 
 | test image  | baseline 1 | baseline 2 | KNN model |
 | ------------- | ------------- | ------------- | ------------- |
 | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/test1.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/output.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline2/output.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/model/output.jpg" width="250" height="280">
@@ -49,7 +52,7 @@ In this project, we will implement four classifiers on human faces, gender, face
 > Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
 > where test_for_Face_info.py is located. 
 
-## Accuracy
+## Result
 #### Evaluation Metric
 ![Evaluation Metric](https://github.com/lon5948/LAIAIAI/blob/main/evaluation.jpg)     
 #### Gender
@@ -67,7 +70,19 @@ In this project, we will implement four classifiers on human faces, gender, face
 | diamond | X | 35 % | 98 % |
 | triangle | 45 % | 30 % | 30 % |     
 #### Eye Color
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| accuracy | 43.6 % | 37.5 % | 71.9 % |
+| testing data | 430 | 430 | 430 |
 #### Race Analysis
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| accuracy | 90.93 % | 89 % | 91.02 % |
+| latency | 57 min/6760 images | 151 min/6760 images | 5 min / 200 images |
+###### model result
+|   | N=100 | N=200 | N=1000 | N=3000 | N=6760 |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| accuracy | 98 % | 95.5 % | 93 % | 92.3 % | 91.02 % |
 
 ## Installation
 ```
@@ -109,7 +124,9 @@ pip install face_alignment
 
 2. Dataset of Gender：[download](https://www.kaggle.com/datasets/ashwingupta3012/male-and-female-faces-dataset)
   
-2. Dataset of Face Shape：[download](https://drive.google.com/file/d/1K5MkBs9EVuNA8isQR_3fJr_84TIFJOT7/view)
+3. Dataset of Face Shape：[download](https://drive.google.com/file/d/1K5MkBs9EVuNA8isQR_3fJr_84TIFJOT7/view)   
+
+4. Dataset of Race and Eye-Color：[download](https://www.kaggle.com/datasets/davidjfisher/illinois-doc-labeled-faces-dataset)
 
 ## Reference
 ###### gender
