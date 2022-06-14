@@ -10,7 +10,7 @@ In this project, we will implement four classifiers on human faces, gender, face
 #### Output    
 > **gender：** Man / Woman    
 > **face shape：** diamond / oblong / oval / round / square / triangle     
-> **race：** Asian / Indian / Black / White   
+> **race：** Asian / Black / White   
 > **eye color：** Black / Brown / Green / Blue  
 
 ## Implementation
