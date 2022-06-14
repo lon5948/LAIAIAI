@@ -55,7 +55,7 @@ In this project, we will implement four classifiers on human faces, gender, face
 > where test_for_Face_info.py is located. 
 
 > Model：     
-> - CNN-based face detector + + MLP 
+> - CNN-based face detector + MLP 
 
 
 ## Result
