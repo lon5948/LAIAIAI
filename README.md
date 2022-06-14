@@ -49,6 +49,10 @@ In this project, we will implement four classifiers on human faces, gender, face
 #### Evaluation Metric
 ![Evaluation Metric](https://github.com/lon5948/LAIAIAI/blob/main/evaluation.jpg)     
 #### Gender
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| man | 85 % | 92 % | 98 % |
+| woman | 75% | 81 % | 82 % |
 #### Face Shape   
 |   | baseline 1 | baseline 2 | model |
 | ------------- | ------------- | ------------- | ------------- |
@@ -97,7 +101,9 @@ pip install face_alignment
 
 ## Datasets
 
-1. Datasets for testing：[download](https://drive.google.com/file/d/1NcbXiu5LVI8T_QC9_SduTqQVMMae1oZ0/view)    
+1. Datasets for testing：[download](https://drive.google.com/file/d/1NcbXiu5LVI8T_QC9_SduTqQVMMae1oZ0/view) 
+
+2. Dataset of Gender：[download](https://www.kaggle.com/datasets/ashwingupta3012/male-and-female-faces-dataset)
   
 2. Dataset of Face Shape：[download](https://drive.google.com/file/d/1K5MkBs9EVuNA8isQR_3fJr_84TIFJOT7/view)
 
