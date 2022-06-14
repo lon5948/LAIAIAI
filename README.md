@@ -10,7 +10,7 @@ In this project, we will implement four classifiers on human faces, gender, face
 #### Output    
 > **gender：** Man / Woman    
 > **face shape：** diamond / oblong / oval / round / square / triangle     
-> **race：** Asian / Indian / Black / White / Middle eastern / Latino hispanic    
+> **race：** Asian / Black / White   
 > **eye color：** Black / Brown / Green / Blue  
 
 ## Implementation
@@ -20,12 +20,19 @@ In this project, we will implement four classifiers on human faces, gender, face
 > When you run the script for the first time, it will download the pre-trained model from this [link](https://github.com/arunponnusamy/cvlib/releases/download/v0.2.0/gender_detection.model) and place it under pre-trained
 > directory in the current path.
 
-> gender3：   
-> Download the pretrained models from [here](https://drive.google.com/uc?id=1wUXRVlbsni2FN9-jkS_f4UTUrm1bRLyk) and save it in the same folder as where f_my_gender.py 
+> model：   
+> Download the pretrained models from [here](https://drive.google.com/uc?id=1wUXRVlbsni2FN9-jkS_f4UTUrm1bRLyk) and save it in the same folder as where model_main.py 
 > is located.
 
-#### Face Shape
+| test image  | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs1/3.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs1/gender_detection.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs2/3_output.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/model/3_output.jpg" width="250" height="280">
 
+#### Face Shape
+> baseline 1: face_ecognition    
+> baseline 2: K Means Clustering     
+> model: K Nearest Neighbor(KNN)     
+> 
 | test image  | baseline 1 | baseline 2 | KNN model |
 | ------------- | ------------- | ------------- | ------------- |
 | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/test1.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline1/output.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/baseline2/output.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/face_shape/model/output.jpg" width="250" height="280">
@@ -37,19 +44,28 @@ In this project, we will implement four classifiers on human faces, gender, face
 | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/baseline1/test2.jpeg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/baseline1/result.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/bs2/result.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/model/results/test2.jpeg" width="250" height="280">
 
 #### Race Analysis
-> FairFace：      
-> Download the pretrained models from [here](https://drive.google.com/file/d/1n7L6mZjf9JeZqDiUL8SvdqY_kJeefhzO/view?usp=sharing) and save it in the same folder as 
+> Baseline 1：  
+> - CNN-based face detector + ResNet-34    
+> - Download the pretrained models from [here](https://drive.google.com/file/d/1n7L6mZjf9JeZqDiUL8SvdqY_kJeefhzO/view?usp=sharing) and save it in the same folder as 
 > where predict.py is located. Two models are included, race_4 model predicts race as White, Black, Asian and Indian.
 
-> race 2：      
-> Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
+> Bseline 2：     
+> - HOG-based face detector + Tensorflow/Keras 
+> - Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
 > where test_for_Face_info.py is located. 
 
-## Accuracy
-```
-check if output = label or not
-```
+> Model：     
+> - CNN-based face detector + MLP 
+
+
+## Result
+#### Evaluation Metric
+![Evaluation Metric](https://github.com/lon5948/LAIAIAI/blob/main/evaluation.jpg)     
 #### Gender
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| man | 85 % | 92 % | 98 % |
+| woman | 75% | 81 % | 82 % |
 #### Face Shape   
 |   | baseline 1 | baseline 2 | model |
 | ------------- | ------------- | ------------- | ------------- |
@@ -60,7 +76,19 @@ check if output = label or not
 | diamond | X | 35 % | 98 % |
 | triangle | 45 % | 30 % | 30 % |     
 #### Eye Color
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| accuracy | 43.6 % | 37.5 % | 71.9 % |
+| testing data | 430 | 430 | 430 |
 #### Race Analysis
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| accuracy | 90.93 % | 89 % | 91.02 % |
+| latency | 57 min/6760 images | 151 min/6760 images | 5 min / 200 images |
+###### race model accuracy between different amount
+|   | N=100 | N=200 | N=1000 | N=3000 | N=6760 |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| accuracy | 98 % | 95.5 % | 93 % | 92.3 % | 91.02 % |
 
 ## Installation
 ```
@@ -98,9 +126,13 @@ pip install face_alignment
 
 ## Datasets
 
-1. Datasets for testing：[download](https://drive.google.com/file/d/1NcbXiu5LVI8T_QC9_SduTqQVMMae1oZ0/view)    
+1. Datasets for testing：[download](https://drive.google.com/file/d/1NcbXiu5LVI8T_QC9_SduTqQVMMae1oZ0/view) 
+
+2. Dataset of Gender：[download](https://www.kaggle.com/datasets/ashwingupta3012/male-and-female-faces-dataset)
   
-2. Dataset of Face Shape：[download](https://drive.google.com/file/d/1K5MkBs9EVuNA8isQR_3fJr_84TIFJOT7/view)
+3. Dataset of Face Shape：[download](https://drive.google.com/file/d/1K5MkBs9EVuNA8isQR_3fJr_84TIFJOT7/view)   
+
+4. Dataset of Race and Eye-Color：[download](https://www.kaggle.com/datasets/davidjfisher/illinois-doc-labeled-faces-dataset)
 
 ## Reference
 ###### gender
