@@ -79,7 +79,7 @@ In this project, we will implement four classifiers on human faces, gender, face
 | ------------- | ------------- | ------------- | ------------- |
 | accuracy | 90.93 % | 89 % | 91.02 % |
 | latency | 57 min/6760 images | 151 min/6760 images | 5 min / 200 images |
-###### model result
+###### race model accuracy between different amount
 |   | N=100 | N=200 | N=1000 | N=3000 | N=6760 |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | accuracy | 98 % | 95.5 % | 93 % | 92.3 % | 91.02 % |
