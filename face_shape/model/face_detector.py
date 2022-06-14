@@ -3,8 +3,11 @@ import dlib
 from imutils import face_utils
 import joblib
 
+# a pretrained face detecting classifier in dlib module
 face_detector = dlib.get_frontal_face_detector()
+# pretrained external algorithm for detecting 68 points of a face in a image
 landmark_detector = dlib.shape_predictor('face_shape/shape_predictor_68_face_landmarks.dat')
+
 clsfr=joblib.load('face_shape/model/KNN_model.sav')
 
 def predict_face_type(points):
@@ -29,12 +32,9 @@ def predict_face_type(points):
 
 def shapemain(imagepath):
     img = cv2.imread(imagepath)
-    #img is a single frame (RGB) captured by the camera
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     #img will be converted into a gray image
     rect=face_detector(gray)
-    (height,width)=img.shape[0:2]
-
     try:
         points=landmark_detector(gray,rect[0])
         #getting the 68 points of the face
@@ -46,7 +46,7 @@ def shapemain(imagepath):
             cv2.circle(img,cen,2,(0,255,0),-1)
             cv2.putText(img,str(count),cen,cv2.FONT_HERSHEY_SIMPLEX,0.3,(0,255,255),1)
             count = count+1
-            face = predict_face_type(points)
+        face = predict_face_type(points)
         #cv2.imwrite('output.jpg',img)
         return face
         
