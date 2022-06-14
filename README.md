@@ -1,4 +1,7 @@
 ## Introduction
+Due to pandemic, online dating has become the safest and most romantic way to meet a partner. But the selection of photos is time consuming, thus, we'd like to introduce to you a Dating App that can classifiy human's faces and output photos with a face that you adore.     
+       
+In this project, we will implement four classifiers on human faces, gender, face shape, skin color and eye color.We will give an image of human face as input and output the four attributes that our system judges.
 
 ## Input/Output
 #### Input      
