@@ -24,6 +24,10 @@ In this project, we will implement four classifiers on human faces, gender, face
 > Download the pretrained models from [here](https://drive.google.com/uc?id=1wUXRVlbsni2FN9-jkS_f4UTUrm1bRLyk) and save it in the same folder as where f_my_gender.py 
 > is located.
 
+| test image  | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs1/3.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs1/gender_detection.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/bs2/3_output.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/gender/model/3_output.jpg" width="250" height="280">
+
 #### Face Shape
 
 | test image  | baseline 1 | baseline 2 | KNN model |
