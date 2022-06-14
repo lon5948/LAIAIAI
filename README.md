@@ -42,7 +42,8 @@
 > Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
 > where test_for_Face_info.py is located. 
 
-## Comparison
+## Accuracy
+> check if output = label or not
 #### Gender
 #### Face Shape   
 |   | baseline 1 | baseline 2 | model |
