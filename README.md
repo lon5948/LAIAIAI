@@ -51,7 +51,7 @@ In this project, we will implement four classifiers on human faces, gender, face
 
 > Bseline 2：     
 > - HOG-based face detector + Tensorflow/Keras 
-> Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
+> - Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
 > where test_for_Face_info.py is located. 
 
 > Model：     
