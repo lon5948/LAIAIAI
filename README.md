@@ -43,7 +43,9 @@
 > where test_for_Face_info.py is located. 
 
 ## Accuracy
-> check if output = label or not
+```
+check if output = label or not
+```
 #### Gender
 #### Face Shape   
 |   | baseline 1 | baseline 2 | model |
