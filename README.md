@@ -46,9 +46,8 @@ In this project, we will implement four classifiers on human faces, gender, face
 > where test_for_Face_info.py is located. 
 
 ## Accuracy
-```
-check if output = label or not
-```
+#### Evaluation Metric
+![Evaluation Metric](https://github.com/lon5948/LAIAIAI/blob/main/evaluation.jpg)     
 #### Gender
 #### Face Shape   
 |   | baseline 1 | baseline 2 | model |
