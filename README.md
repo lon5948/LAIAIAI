@@ -44,13 +44,19 @@ In this project, we will implement four classifiers on human faces, gender, face
 | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/baseline1/test2.jpeg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/baseline1/result.jpg" width="250" height="280">  | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/bs2/result.jpg" width="250" height="280"> | <img src="https://github.com/lon5948/LAIAIAI/blob/main/eye_color/model/results/test2.jpeg" width="250" height="280">
 
 #### Race Analysis
-> Baseline 1：      
-> Download the pretrained models from [here](https://drive.google.com/file/d/1n7L6mZjf9JeZqDiUL8SvdqY_kJeefhzO/view?usp=sharing) and save it in the same folder as 
+> Baseline 1：  
+> - CNN-based face detector + ResNet-34    
+> - Download the pretrained models from [here](https://drive.google.com/file/d/1n7L6mZjf9JeZqDiUL8SvdqY_kJeefhzO/view?usp=sharing) and save it in the same folder as 
 > where predict.py is located. Two models are included, race_4 model predicts race as White, Black, Asian and Indian.
 
-> Bseline 2：      
+> Bseline 2：     
+> - HOG-based face detector + Tensorflow/Keras 
 > Download the pretrained models from [here](https://drive.google.com/file/d/1aJYpSF34_G-Hybrq6HRKDQ6FVjn2ZGzq/view?usp=sharing) and save it in the same folder as 
 > where test_for_Face_info.py is located. 
+
+> Model：     
+> - CNN-based face detector + + MLP 
+
 
 ## Result
 #### Evaluation Metric
