@@ -44,7 +44,15 @@
 
 ## Comparison
 #### Gender
-#### Face Shape
+#### Face Shape   
+|   | baseline 1 | baseline 2 | model |
+| ------------- | ------------- | ------------- | ------------- |
+| square | 47.3 % | 47 % | 93 % |
+| oblong | X | 56 % | 91 % |
+|  oval | X | 58 % | 81 % |
+| round | 2.51 % | 69 % | 88 % |
+| diamond | X | 35 % | 98 % |
+| triangle | 45 % | 30 % | 30 % |     
 #### Eye Color
 #### Race Analysis
 
